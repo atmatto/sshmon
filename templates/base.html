@@ -1,0 +1,151 @@
+{{define "header"}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SSH Monitor – {{.Page}}</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 30px;
+            }
+            nav {
+                display: flex;
+                flex-direction: row;
+                background-color: navy;
+                padding: 0 10px;
+                border-radius: 6px;
+                margin-bottom: 20px;
+            }
+            nav > a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 3px 10px;
+                border-left: 1px solid white;
+                border-right: 1px solid white;
+                margin-right: -1px;
+                transition: 100ms background-color;
+            }
+            nav > a:hover {
+                background-color: #fff6;
+            }
+            nav > a.open {
+                background-color: #fff5;
+                cursor: default;
+            }
+            footer {
+                font-size: 0.9em;
+                margin-top: 40px;
+            }
+            .ws {
+                white-space: pre;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            h1 {
+                margin: 6px 0;
+            }
+            h1 img {
+                height: 80px;
+            }
+            h2 {
+                /* display: inline-block;
+                border-bottom: 2px dashed black; */
+                text-decoration: 2px underline wavy #888;
+                margin-bottom: 25px;
+            }
+            .card {
+                --color-main: #74d982;
+                --color-second: #b5edbc;
+            }
+            .card.negative {
+                --color-main: #f28077;
+                --color-second: #f5a19a;
+            }
+            .card.neutral {
+                --color-main: #c3d9ff;
+                --color-second: #e0ecff;
+            }
+            .card {
+                background-color: var(--color-second);
+                border: 6px solid var(--color-main);
+                border-radius: 6px;
+                width: 200px;
+                min-width: max-content;
+                margin-bottom: 15px;
+                transition: 200ms opacity;
+            }
+            .card > :first-child {
+                background-color: var(--color-main);
+                margin: 0;
+                padding: 3px 8px;
+                padding-bottom: 6px;
+            }
+            .card > :not(:first-child) {
+                margin: 0;
+                font-size: 1.3em;                
+                margin: 6px 8px;
+            }
+            .card:hover {
+                opacity: 80%;
+            }
+            .row {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+            }
+            pre {
+                border: 1px solid #ccc;
+                border-radius: 9px;
+                padding: 18px;
+                background-color: #f5f5f5;
+            }
+            table {
+                background-color: #f5f5f5;
+            }
+            th, td {
+                border: 1px solid #aaa;
+                padding: 2px 8px;
+            }
+            th {
+                text-align: left;
+                background-color: #e0e0e0;
+            }
+            ul {
+                list-style: square inside;
+                padding-left: 0;
+            }
+            .files > a {
+                display: block;
+                width: max-content;
+                color: black;
+                text-decoration: none;
+                background-color: #c9deff;
+                border: 2px solid #9bb4de;
+                margin-bottom: 8px;
+                padding: 5px 10px;
+                border-radius: 10px;
+                transition: 200ms background-color, 200ms border-color;
+            }
+            .files > a:hover {
+                background-color: #eef2f7;
+                border-color: #54637c;
+            }
+        </style>
+    </head>
+    <body>
+        <h1><a href="status.html"><img src="/static/logo.png" alt="SSH Monitor"></a></h1>
+        <nav>
+            <a href="status.html" {{if eq .Page "Status"}}class="open"{{end}}>Server status</a>
+            <a href="network.html" {{if eq .Page "Network"}}class="open"{{end}}>Network</a>
+            <a href="configuration.html" {{if eq .Page "Configuration"}}class="open"{{end}}>Configuration</a>
+            <a href="security.html" {{if eq .Page "Security"}}class="open"{{end}}>Security</a>
+            <a href="manuals.html" {{if eq .Page "Manuals"}}class="open"{{end}}>Manuals</a>
+        </nav>
+{{end}}
+{{define "footer"}}
+        <footer>Last updated: {{.Time}}</footer>
+    </body>
+</html>
+{{end}}

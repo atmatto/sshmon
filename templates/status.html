@@ -1,0 +1,21 @@
+{{template "header" .}}
+<h2>SSH Server status</h2>
+<div class="row">
+    <div class='card {{if ne .Active "active"}} negative {{end}}'>
+        <p>Current status</p>
+        <p>{{.Active}}</p>
+    </div>
+    <div class='card {{if ne .Enabled "enabled"}}{{if ne .Enabled "socket-activated"}} negative {{end}}{{end}}'>
+        <p>Service configuration</p>
+        <p>{{.Enabled}}</p>
+    </div>
+    <div class='card {{if ne .Port "22"}} neutral {{end}}'>
+        <p>Port number</p>
+        <p>{{.Port}}</p>
+    </div>
+</div>
+<h3>Active connections</h3>
+{{if eq .Users ""}}<p><em>No users connected</em></p>{{else}}<table>{{.Users}}</table>{{end}}
+<h3>Log</h3>
+<pre>{{.Log}}</pre>
+{{template "footer" .}}
